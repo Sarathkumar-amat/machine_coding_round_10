@@ -23,6 +23,7 @@ export function InventoryProvider({children})
    
     useEffect(()=>{
         localStorage.setItem("allProds",JSON.stringify(inventoryData));
+        setProdList(inventoryData);
         dispatchProduct({type:"SET_PRODUCTS",payload:inventoryData})
     },[]);
     useEffect(()=>{

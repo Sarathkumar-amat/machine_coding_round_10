@@ -29,8 +29,8 @@ export function NewProduct()
 {
    const {prodList,setProdList,productData,dispatchProduct} = useContext(InventoryContext);
    const [productValue,dispatcher] = useReducer(newProdDispatcher,{
-    department:"",name:"",price:null,stock:null,description:"",price:null,sku:"",supplier:"",
-    delivered:null,imageUrl:""
+    department:"",name:"",price:0,stock:0,description:"",price:0,sku:"",supplier:"",
+    delivered:0,imageUrl:""
     })
     const handleSubmit = ()=>{
         console.log("here");
