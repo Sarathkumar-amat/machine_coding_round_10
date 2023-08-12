@@ -26,7 +26,28 @@ export function Products()
             setLowStock(false);
         }
     }
-    
+   
+    if(sortType!=="")
+    {
+        console.log(sortType)
+        if(sortType==="name")
+        {
+            displayData = displayData?.sort((a,b)=>{
+                const nameA = a.name.toLowerCase();
+                const nameB = b.name.toLowerCase();
+                if(nameA<nameB) return -1;
+                else return 1;
+            })
+        }
+        else if(sortType==="stock")
+        {
+            displayData = displayData?.sort((a,b)=>a.stock-b.stock);
+        }
+        else if(sortType==="price")
+        {
+            displayData = displayData?.sort((a,b)=>a.price-b.price);
+        }
+    }
   
     return (<div>
         <h1>Products</h1>
@@ -37,7 +58,7 @@ export function Products()
             <option value="Toys">Toys</option>
         </select>
         <input onChange={(e)=>handleLowStock(e)} type="checkbox" />Low Stock items
-        <select value={productData?.deptName}>
+        <select onChange={(e)=>setSortType(e.target.value)}>
             <option value="">Sort Type</option>
             <option value="name">Name</option>
             <option value="price">Price</option> 
