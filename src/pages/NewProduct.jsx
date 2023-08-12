@@ -6,7 +6,7 @@ function newProdDispatcher(state,action)
     const {type,payload} = action;
     switch(type){
         case "dept":
-            return {...state,dept:payload};
+            return {...state,department:payload};
         case "name":
             return {...state,name:payload};
         case "price":

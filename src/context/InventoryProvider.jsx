@@ -7,6 +7,8 @@ function productReducer(state,action)
     switch(type){
         case "SET_PRODUCTS":
             return {...state,allProducts:payload};
+        case "SET_DEPT":
+            return {...state,deptName:payload};
     }
     
 }
@@ -18,7 +20,7 @@ export function InventoryProvider({children})
     // console.log(allList);
     const [prodList,setProdList] = useState(JSON.parse(allList));
     const [productData,dispatchProduct] = useReducer(productReducer,{
-        allProducts: prodList
+        allProducts: prodList,deptName:""
     });
    
     useEffect(()=>{
