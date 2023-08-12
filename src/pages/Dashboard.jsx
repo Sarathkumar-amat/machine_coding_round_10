@@ -3,10 +3,10 @@ import { InventoryContext } from "../context/InventoryProvider"
 
 export function Dashboard()
 {
-    const {productData,dispatchProduct} = useContext(InventoryContext);
-    const totalStock = productData?.allProducts?.reduce((initVal,current)=>initVal+current.stock ,0);
-    const deliveredCount = productData?.allProducts?.reduce((initVal,current)=>initVal+current.delivered,0);
-    const outOfStock = productData?.allProducts?.filter(({stock})=>stock<=10).length;
+    const {prodList,productData,dispatchProduct} = useContext(InventoryContext);
+    const totalStock =prodList?.reduce((initVal,current)=>initVal+current.stock ,0);
+    const deliveredCount = prodList?.reduce((initVal,current)=>initVal+current.delivered,0);
+    const outOfStock = prodList?.filter(({stock})=>stock<=10).length;
 
     return (<div>
        

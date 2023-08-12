@@ -16,22 +16,24 @@ export const InventoryContext  = createContext();
 
 export function InventoryProvider({children})
 {
-    const allList = localStorage.getItem('allProds');
+  
+    localStorage.setItem("allProdList",JSON.stringify(inventoryData));
     // console.log(allList);
-    const [prodList,setProdList] = useState(JSON.parse(allList));
+    const alllist = localStorage.getItem('allProdList');
+    const [prodList,setProdList] = useState(inventoryData);
+    // localStorage.setItem("allProds",JSON.stringify(prodList));
     const [productData,dispatchProduct] = useReducer(productReducer,{
         allProducts: prodList,deptName:""
     });
    
     useEffect(()=>{
-        localStorage.setItem("allProds",JSON.stringify(inventoryData));
-        // setProdList(inventoryData);
+        const allList = localStorage.getItem("allProds"); 
+        if(allList!==null){
+            setProdList(JSON.parse(allList));
+        }
         dispatchProduct({type:"SET_PRODUCTS",payload:inventoryData})
     },[]);
-    useEffect(()=>{
-        localStorage.setItem("allProds",JSON.stringify(prodList));
-        dispatchProduct({type:"SET_PRODUCTS",payload:prodList});
-    },[prodList]);
+  
     return (<div>
         <InventoryContext.Provider value={{prodList,setProdList,productData,dispatchProduct}}>
             {children}

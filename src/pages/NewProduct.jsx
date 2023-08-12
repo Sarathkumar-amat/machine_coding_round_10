@@ -10,9 +10,9 @@ function newProdDispatcher(state,action)
         case "name":
             return {...state,name:payload};
         case "price":
-            return {...state,price:payload};
+            return {...state,price:Number(payload)};
         case "stock":
-            return {...state,stock:payload};
+            return {...state,stock:Number(payload)};
         case "description":
             return {...state,description:payload};
         case "sku":
@@ -20,7 +20,7 @@ function newProdDispatcher(state,action)
         case "supplier":
             return {...state,supplier:payload};
         case "delivered":
-            return {...state,delivered:payload};
+            return {...state,delivered:Number(payload)};
         case "url":
             return {...state,imageUrl:payload};
     }
@@ -59,22 +59,22 @@ export function NewProduct()
                     Toys
                 </option>
             </select>
-            <label>Name</label>
-            <input onChange={(e)=>dispatcher({type:"name",payload:e.target.value})} type="text" />
-            <label>description</label>
-            <input onChange={(e)=>dispatcher({type:"description",payload:e.target.value})} type="text" />
-            <label>price</label>
-            <input onChange={(e)=>dispatcher({type:"price",payload:e.target.value})} type="text" />
-            <label>stock</label>
-            <input onChange={(e)=>dispatcher({type:"stock",payload:e.target.value})} type="text" />
-            <label>SKU</label>
-            <input onChange={(e)=>dispatcher({type:"sku",payload:e.target.value})} type="text" />
-            <label>Supplier</label>
-            <input onChange={(e)=>dispatcher({type:"supplier",payload:e.target.value})} type="text" />
-            <label>Delivered</label>
-            <input onChange={(e)=>dispatcher({type:"delivered",payload:e.target.value})} type="text" />
-            <label>Image Url</label>
-            <input onChange={(e)=>dispatcher({type:"url",payload:e.target.value})} type="text" />
+                <label>Name</label>
+                <input onChange={(e)=>dispatcher({type:"name",payload:e.target.value})} type="text" />
+                <label>description</label>
+                <input onChange={(e)=>dispatcher({type:"description",payload:e.target.value})} type="text" />
+                <label>price</label>
+                <input onChange={(e)=>dispatcher({type:"price",payload:e.target.value})} type="number" />
+                <label>stock</label>
+                <input onChange={(e)=>dispatcher({type:"stock",payload:e.target.value})} type="number" />
+                <label>SKU</label>
+                <input onChange={(e)=>dispatcher({type:"sku",payload:e.target.value})} type="text" />
+                <label>Supplier</label>
+                <input onChange={(e)=>dispatcher({type:"supplier",payload:e.target.value})} type="text" />
+                <label>Delivered</label>
+                <input onChange={(e)=>dispatcher({type:"delivered",payload:e.target.value})} type="number" />
+                <label>Image Url</label>
+                <input onChange={(e)=>dispatcher({type:"url",payload:e.target.value})} type="text" />
             <button onClick={handleSubmit}>Add Product</button>
         </div>
        
