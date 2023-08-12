@@ -1,5 +1,6 @@
 import { useContext, useReducer } from "react"
 import { InventoryContext } from "../context/InventoryProvider";
+import { useNavigate } from "react-router-dom";
 
 function newProdDispatcher(state,action)
 {
@@ -28,6 +29,7 @@ function newProdDispatcher(state,action)
 export function NewProduct()
 {
    const {prodList,setProdList,productData,dispatchProduct} = useContext(InventoryContext);
+   const navigate = useNavigate();
    const [productValue,dispatcher] = useReducer(newProdDispatcher,{
     department:"",name:"",price:0,stock:0,description:"",price:0,sku:"",supplier:"",
     delivered:0,imageUrl:""
@@ -39,6 +41,7 @@ export function NewProduct()
         localStorage.setItem("allProds",JSON.stringify(newList));
         dispatchProduct({type:"SET_PRODUCTS",payload:newList});
         setProdList(newList);
+        navigate("/products");
     }
     return (<div>
        
