@@ -37,7 +37,7 @@ export function Products()
             <option value="Toys">Toys</option>
         </select>
         <input onChange={(e)=>handleLowStock(e)} type="checkbox" />Low Stock items
-        <select value={productData?.deptName} onChange={(e)=>dispatchProduct({type:"SET_DEPT",payload:e.target.value})}>
+        <select value={productData?.deptName}>
             <option value="">Sort Type</option>
             <option value="name">Name</option>
             <option value="price">Price</option> 
