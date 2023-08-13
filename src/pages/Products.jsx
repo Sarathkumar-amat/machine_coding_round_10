@@ -74,7 +74,7 @@ export function Products()
                 <th>Stock</th>
                 <th>Supplier</th>
             </tr>
-            {displayData?.map(({imageUrl,name,description,price,stock,supplier})=>
+           {displayData?.map(({imageUrl,name,description,price,stock,supplier})=>
                 <tr>
                     <td><img src={imageUrl} height="100px" width="100px" alt="product-photo" /></td>
                     <td><Link>{name}</Link></td>

@@ -34,8 +34,8 @@ export function NewProduct()
     department:"",name:"",price:0,stock:0,description:"",price:0,sku:"",supplier:"",
     delivered:0,imageUrl:""
     })
-    const handleSubmit = ()=>{
-        console.log("here");
+    const handleSubmit = (event)=>{
+        event.preventDefault();
         const newProduct = productValue;
         const newList = [...prodList,{...newProduct}];
         localStorage.setItem("allProds",JSON.stringify(newList));
@@ -46,7 +46,7 @@ export function NewProduct()
     return (<div>
        
         <h2>Add New Product</h2>
-        <div className="all-inputs">
+        <form onSubmit={handleSubmit}  className="all-inputs">
             <label>Department</label>
             <select onChange={(e)=>dispatcher({type:"dept",payload:e.target.value})}>
                 <option>
@@ -62,24 +62,24 @@ export function NewProduct()
                     Toys
                 </option>
             </select>
-                <label>Name</label>
-                <input onChange={(e)=>dispatcher({type:"name",payload:e.target.value})} type="text" />
-                <label>description</label>
-                <input onChange={(e)=>dispatcher({type:"description",payload:e.target.value})} type="text" />
-                <label>price</label>
-                <input onChange={(e)=>dispatcher({type:"price",payload:e.target.value})} type="number" />
-                <label>stock</label>
-                <input onChange={(e)=>dispatcher({type:"stock",payload:e.target.value})} type="number" />
+                <label>Name:</label>
+                <input required onChange={(e)=>dispatcher({type:"name",payload:e.target.value})} type="text" />
+                <label>Description:</label>
+                <input required onChange={(e)=>dispatcher({type:"description",payload:e.target.value})} type="text" />
+                <label>Price:</label>
+                <input required onChange={(e)=>dispatcher({type:"price",payload:e.target.value})} type="number" />
+                <label>Stock: </label>
+                <input required onChange={(e)=>dispatcher({type:"stock",payload:e.target.value})} type="number" />
                 <label>SKU</label>
-                <input onChange={(e)=>dispatcher({type:"sku",payload:e.target.value})} type="text" />
+                <input required onChange={(e)=>dispatcher({type:"sku",payload:e.target.value})} type="text" />
                 <label>Supplier</label>
-                <input onChange={(e)=>dispatcher({type:"supplier",payload:e.target.value})} type="text" />
+                <input required onChange={(e)=>dispatcher({type:"supplier",payload:e.target.value})} type="text" />
                 <label>Delivered</label>
-                <input onChange={(e)=>dispatcher({type:"delivered",payload:e.target.value})} type="number" />
+                <input required onChange={(e)=>dispatcher({type:"delivered",payload:e.target.value})} type="number" />
                 <label>Image Url</label>
-                <input onChange={(e)=>dispatcher({type:"url",payload:e.target.value})} type="text" />
-            <button onClick={handleSubmit}>Add Product</button>
-        </div>
+                <input required onChange={(e)=>dispatcher({type:"url",payload:e.target.value})} type="text" />
+            <input className="submit-button" type="submit" value="Add product" />
+        </form>
        
     </div>)
 }

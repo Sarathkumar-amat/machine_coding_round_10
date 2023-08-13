@@ -9,13 +9,15 @@ import { NewProduct } from './pages/NewProduct';
 function App() {
   return (
     <div className="App">
-      <SideBar />
-        <Routes>
-          <Route path="/" element={<Dashboard />}/>
-          <Route path="/departments" element={<Departments />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/newProduct" element={<NewProduct />} />
-        </Routes>
+      <div className='sidebar-route'>
+        <SideBar />
+          <Routes>
+            <Route path="/" element={<Dashboard />}/>
+            <Route path="/departments" element={<Departments />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/newProduct" element={<NewProduct />} />
+          </Routes>
+        </div>
     </div>
   );
 }
