@@ -5,6 +5,7 @@ import { SideBar } from './components/SideBar';
 import { Departments } from './pages/Departments';
 import { Products } from './pages/Products';
 import { NewProduct } from './pages/NewProduct';
+import { IndividualProduct } from './pages/IndividualProduct';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/departments" element={<Departments />} />
             <Route path="/products" element={<Products />} />
             <Route path="/newProduct" element={<NewProduct />} />
+            <Route path="/productDetail/:prodId" element={<IndividualProduct />} />
           </Routes>
         </div>
     </div>

@@ -1,6 +1,7 @@
 import { useContext, useReducer } from "react"
 import { InventoryContext } from "../context/InventoryProvider";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuid} from "uuid";
 
 function newProdDispatcher(state,action)
 {
@@ -37,7 +38,7 @@ export function NewProduct()
     const handleSubmit = (event)=>{
         event.preventDefault();
         const newProduct = productValue;
-        const newList = [...prodList,{...newProduct}];
+        const newList = [...prodList,{...newProduct,id:uuid()}];
         localStorage.setItem("allProds",JSON.stringify(newList));
         dispatchProduct({type:"SET_PRODUCTS",payload:newList});
         setProdList(newList);
